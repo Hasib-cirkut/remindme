@@ -4,10 +4,10 @@ const router = express.Router();
 
 const PostModel = require('../Models/Post');
 
-router.get('/', (req, res) => {
-	res.send({
-		message: 'We are in post route'
-	});
+router.get('/', async (req, res) => {
+	let posts = await PostModel.find({});
+
+	res.send(posts);
 });
 
 router.post('/addpost', async (req, res) => {
@@ -26,6 +26,16 @@ router.post('/addpost', async (req, res) => {
 	} catch (err) {
 		res.json({ message: err });
 	}
+});
+
+router.delete('/deletepost', async (req, res) => {
+	let { _id } = req.body;
+
+	let post = await PostModel.deleteOne({ _id });
+
+	res.send({
+		message: 'post_deleted'
+	});
 });
 
 module.exports = router;

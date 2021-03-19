@@ -11,6 +11,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/addpost', async (req, res) => {
+	console.log(req.body);
+
 	let { username, title, type } = req.body;
 
 	let post = new PostModel({

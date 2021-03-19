@@ -1,19 +1,21 @@
-function FormComp() {
+import { useState } from 'react';
+
+function FormComp({ handleName, handleDropdown, handleSubmit }) {
 	return (
 		<div style={{ marginTop: '10vh', marginRight: '5vh', marginLeft: '5vh' }}>
 			<form action="">
 				<label htmlFor="name">Name</label>
-				<input type="text" name="name" />
+				<input type="text" name="name" onChange={(e) => handleName(e)} />
 
-				<label for="type">Select type</label>
+				<label htmlFor="type">Select type</label>
 
-				<select name="type" id="type">
+				<select name="type" id="type" onChange={(e) => handleDropdown(e)}>
 					<option value="mustwatch">Must Watch</option>
 					<option value="continuewatching">Continue Watching</option>
 					<option value="rewatch">Rewatch</option>
 				</select>
 
-				<input type="submit" value="Add" />
+				<input type="submit" onClick={handleSubmit} />
 			</form>
 		</div>
 	);

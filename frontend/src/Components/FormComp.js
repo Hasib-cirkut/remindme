@@ -1,11 +1,9 @@
-import { useState } from 'react';
-
-function FormComp({ handleName, handleDropdown, handleSubmit }) {
+function FormComp({ handleName, handleDropdown, handleSubmit, name }) {
 	return (
 		<div style={{ marginTop: '10vh', marginRight: '5vh', marginLeft: '5vh' }}>
 			<form action="">
 				<label htmlFor="name">Name</label>
-				<input type="text" name="name" onChange={(e) => handleName(e)} />
+				<input type="text" name="name" value={name} onChange={(e) => handleName(e)} />
 
 				<label htmlFor="type">Select type</label>
 

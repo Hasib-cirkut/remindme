@@ -1,7 +1,6 @@
 import { Row, Col } from 'antd';
 import Nav from '../Components/Nav';
 import FormComp from '../Components/FormComp';
-import Sections from '../Components/Sections';
 
 import { useState, useEffect } from 'react';
 
@@ -11,6 +10,10 @@ function Main() {
 
 	const [ show, setShow ] = useState([]);
 	const [ valSubmitted, setValsubmitted ] = useState('no');
+
+	const [ mustWatch, setMustWatch ] = useState([]);
+	const [ conWatch, setConWatch ] = useState([]);
+	const [ rewatch, setRewatch ] = useState([]);
 
 	const handleDropdown = (event) => {
 		setType((prevVal) => {
@@ -40,11 +43,15 @@ function Main() {
 		temp = await temp.json();
 
 		setValsubmitted((prev) => {
-			if (prev == 'yes') {
+			if (prev === 'yes') {
 				return 'no';
 			} else {
 				return 'yes';
 			}
+		});
+
+		setName((prev) => {
+			return '';
 		});
 	}
 
@@ -55,15 +62,37 @@ function Main() {
 
 				data = await data.json();
 
-				setShow((prev) => {
-					return data;
+				let mWatch = [];
+				let cWatch = [];
+				let rWatch = [];
+
+				data.map((show) => {
+					if (show.type === 'mustwatch') {
+						mWatch.push(show);
+					} else if (show.type === 'continuewatching') {
+						cWatch.push(show);
+					} else {
+						rWatch.push(show);
+					}
+				});
+
+				setMustWatch((prev) => {
+					return [ ...mWatch ];
+				});
+
+				setConWatch((prev) => {
+					return [ ...cWatch ];
+				});
+
+				setRewatch((prev) => {
+					return [ ...rWatch ];
 				});
 			}
 
 			getData();
 			console.log('running');
 		},
-		[ valSubmitted ]
+		[ valSubmitted, name ]
 	);
 
 	return (
@@ -75,12 +104,41 @@ function Main() {
 
 				<Col span={12} style={{ display: 'flex', flexDirection: 'column' }}>
 					<Nav />
-					<FormComp handleName={handleName} handleDropdown={handleDropdown} handleSubmit={handleSubmit} />
-					<Sections />
+					<FormComp
+						handleName={handleName}
+						handleDropdown={handleDropdown}
+						handleSubmit={handleSubmit}
+						name={name}
+					/>
 
-					{show.map((tempShow) => {
-						return <h3>{tempShow.title}</h3>;
-					})}
+					<div style={{ marginTop: '5vh' }}>
+						<div>
+							<h3>Must watch</h3>
+							<hr />
+
+							{mustWatch.map((show) => {
+								return <h1>{show.title}</h1>;
+							})}
+						</div>
+
+						<div>
+							<h3>Continue Watching</h3>
+							<hr />
+
+							{conWatch.map((show) => {
+								return <h1>{show.title}</h1>;
+							})}
+						</div>
+
+						<div>
+							<h3>Rewatch</h3>
+							<hr />
+
+							{rewatch.map((show) => {
+								return <h1>{show.title}</h1>;
+							})}
+						</div>
+					</div>
 				</Col>
 				<Col span={6} style={{ background: 'gray', height: '100vh' }}>
 					col-8

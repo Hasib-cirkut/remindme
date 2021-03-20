@@ -1,6 +1,6 @@
 function FormComp({ handleName, handleDropdown, handleSubmit, name }) {
 	return (
-		<div className="m-1 py-4 flex flex-row my-4 mx-2 text-center shadow-lg justify-center  rounded-sm">
+		<div className="m-1 py-4 flex flex-row my-4 mx-2 text-center shadow-lg justify-center rounded-sm sm:max-w-2xl sm:mx-auto sm:mt-12">
 			<form>
 				<div className="mb-2">
 					<label htmlFor="name" className="mb-2 uppercase font-bold text-md text-grey-darkest">

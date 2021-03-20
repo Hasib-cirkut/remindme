@@ -16,6 +16,8 @@ function Main() {
 	const [ conWatch, setConWatch ] = useState([]);
 	const [ rewatch, setRewatch ] = useState([]);
 
+	const [ edit, setEdit ] = useState(false);
+
 	const handleDropdown = (event) => {
 		setType((prevVal) => {
 			return event.target.value;
@@ -30,6 +32,10 @@ function Main() {
 
 	async function handleSubmit(event) {
 		event.preventDefault();
+
+		if (name === '') {
+			return;
+		}
 
 		let temp = await fetch(`http://localhost:5000/post/addpost`, {
 			method: 'POST',
@@ -54,6 +60,12 @@ function Main() {
 		setName((prev) => {
 			return '';
 		});
+	}
+
+	function handleEdit(event) {
+		event.preventDefault();
+
+		setEdit((prev) => !prev);
 	}
 
 	useEffect(
@@ -101,36 +113,51 @@ function Main() {
 			<Nav />
 			<FormComp handleName={handleName} handleDropdown={handleDropdown} handleSubmit={handleSubmit} name={name} />
 
-			<div className="m-1">
-				<div className="mx-2 my-4 shadow-lg px-4 py-2">
-					<h3>Must watch</h3>
+			<div className="m-1 sm:max-w-2xl sm:mx-auto">
+				<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="flex justify-between">
+						<h3>Must watch</h3>
+						{edit ? (
+							<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
+								Edit
+							</button>
+						) : (
+							<button onClick={handleEdit} className="px-2 bg-green-300 rounded">
+								Edit
+							</button>
+						)}
+					</div>
 					<hr />
 
-					<div className="max-h-32 overflow-auto">
+					<div className="max-h-32 sm:max-h-52 overflow-auto">
 						{mustWatch.map((show) => {
-							return <Show data={show} key={show._id} />;
+							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}
 					</div>
 				</div>
 
-				<div className="mx-2 my-4 shadow-lg px-4 py-2">
-					<h3>Continue Watching</h3>
+				<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="flex justify-between">
+						<h3>Continue Watching</h3>
+					</div>
 					<hr />
 
 					<div className="max-h-32 overflow-auto">
 						{conWatch.map((show) => {
-							return <Show data={show} key={show._id} />;
+							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}
 					</div>
 				</div>
 
-				<div className="mx-2 my-4 shadow-lg px-4 py-2">
-					<h3>Rewatch</h3>
+				<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="flex justify-between">
+						<h3>Rewatch</h3>
+					</div>
 					<hr />
 
 					<div className="max-h-32 overflow-auto">
 						{rewatch.map((show) => {
-							return <Show data={show} key={show._id} />;
+							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}
 					</div>
 				</div>

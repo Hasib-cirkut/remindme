@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd';
 import Nav from '../Components/Nav';
 import FormComp from '../Components/FormComp';
+import Show from '../Components/Show';
 
 import { useState, useEffect } from 'react';
 
@@ -97,53 +98,43 @@ function Main() {
 
 	return (
 		<div className="App">
-			<Row>
-				<Col span={6} style={{ background: 'gray', height: '100vh' }}>
-					col-8
-				</Col>
+			<Nav />
+			<FormComp handleName={handleName} handleDropdown={handleDropdown} handleSubmit={handleSubmit} name={name} />
 
-				<Col span={12} style={{ display: 'flex', flexDirection: 'column' }}>
-					<Nav />
-					<FormComp
-						handleName={handleName}
-						handleDropdown={handleDropdown}
-						handleSubmit={handleSubmit}
-						name={name}
-					/>
+			<div className="m-1">
+				<div className="mx-2 my-4 shadow-lg px-4 py-2">
+					<h3>Must watch</h3>
+					<hr />
 
-					<div style={{ marginTop: '5vh' }}>
-						<div>
-							<h3>Must watch</h3>
-							<hr />
-
-							{mustWatch.map((show) => {
-								return <h1>{show.title}</h1>;
-							})}
-						</div>
-
-						<div>
-							<h3>Continue Watching</h3>
-							<hr />
-
-							{conWatch.map((show) => {
-								return <h1>{show.title}</h1>;
-							})}
-						</div>
-
-						<div>
-							<h3>Rewatch</h3>
-							<hr />
-
-							{rewatch.map((show) => {
-								return <h1>{show.title}</h1>;
-							})}
-						</div>
+					<div className="max-h-32 overflow-auto">
+						{mustWatch.map((show) => {
+							return <Show data={show} key={show._id} />;
+						})}
 					</div>
-				</Col>
-				<Col span={6} style={{ background: 'gray', height: '100vh' }}>
-					col-8
-				</Col>
-			</Row>
+				</div>
+
+				<div className="mx-2 my-4 shadow-lg px-4 py-2">
+					<h3>Continue Watching</h3>
+					<hr />
+
+					<div className="max-h-32 overflow-auto">
+						{conWatch.map((show) => {
+							return <Show data={show} key={show._id} />;
+						})}
+					</div>
+				</div>
+
+				<div className="mx-2 my-4 shadow-lg px-4 py-2">
+					<h3>Rewatch</h3>
+					<hr />
+
+					<div className="max-h-32 overflow-auto">
+						{rewatch.map((show) => {
+							return <Show data={show} key={show._id} />;
+						})}
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

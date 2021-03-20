@@ -7,6 +7,8 @@ const PostModel = require('../Models/Post');
 router.get('/', async (req, res) => {
 	let posts = await PostModel.find({});
 
+	console.log(posts);
+
 	res.send(posts);
 });
 

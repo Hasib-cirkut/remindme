@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 
 function Main() {
 	const [ name, setName ] = useState('');
+	const [ genre, setGenre ] = useState('');
 	const [ type, setType ] = useState('mustwatch');
 
 	const [ show, setShow ] = useState([]);
@@ -29,6 +30,11 @@ function Main() {
 			return event.target.value;
 		});
 	}
+	const handleGenre = (event) => {
+		setGenre((prevVal) => {
+			return event.target.value;
+		});
+	};
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -111,7 +117,14 @@ function Main() {
 	return (
 		<div className="App">
 			<Nav />
-			<FormComp handleName={handleName} handleDropdown={handleDropdown} handleSubmit={handleSubmit} name={name} />
+			<FormComp
+				handleName={handleName}
+				handleDropdown={handleDropdown}
+				handleSubmit={handleSubmit}
+				handleGenre={handleGenre}
+				name={name}
+				genre={genre}
+			/>
 
 			<div className="m-1 sm:max-w-2xl sm:mx-auto">
 				<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">

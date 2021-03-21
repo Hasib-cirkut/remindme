@@ -12,7 +12,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, name }) {
 						name="name"
 						value={name}
 						onChange={(e) => handleName(e)}
-						className="border py-1 px-2 text-grey-darkest"
+						className="border py-1 px-2 text-grey-darkest sm:w-64"
 					/>
 				</div>
 
@@ -25,7 +25,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, name }) {
 						name="type"
 						id="type"
 						onChange={(e) => handleDropdown(e)}
-						className="border py-1 px-2 text-grey-darkest"
+						className="border py-1 px-2 text-grey-darkest sm:w-64"
 					>
 						<option value="mustwatch">Must Watch</option>
 						<option value="continuewatching">Continue Watching</option>
@@ -36,7 +36,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, name }) {
 				<input
 					type="submit"
 					onClick={handleSubmit}
-					className="block bg-green-300 hover:bg-bg-green-600 text-white uppercase text-md mx-auto p-2 rounded"
+					className="block bg-green-300 hover:bg-green-500 text-white uppercase text-md mx-auto p-2 rounded transition delay-150 duration-300 ease-in-out"
 				/>
 			</form>
 		</div>

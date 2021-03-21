@@ -115,7 +115,7 @@ function Main() {
 
 			<div className="m-1 sm:max-w-2xl sm:mx-auto">
 				<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
-					<div className="flex justify-between">
+					<div className="flex justify-between mb-1">
 						<h3>Must watch</h3>
 						{edit ? (
 							<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
@@ -129,7 +129,7 @@ function Main() {
 					</div>
 					<hr />
 
-					<div className="max-h-32 sm:max-h-52 overflow-auto">
+					<div className="max-h-32 sm:max-h-52 overflow-auto px-2">
 						{mustWatch.map((show) => {
 							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}
@@ -142,7 +142,7 @@ function Main() {
 					</div>
 					<hr />
 
-					<div className="max-h-32 overflow-auto">
+					<div className="max-h-32 overflow-auto px-2">
 						{conWatch.map((show) => {
 							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}
@@ -155,7 +155,7 @@ function Main() {
 					</div>
 					<hr />
 
-					<div className="max-h-32 overflow-auto">
+					<div className="max-h-32 overflow-auto px-2">
 						{rewatch.map((show) => {
 							return <Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />;
 						})}

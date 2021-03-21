@@ -25,7 +25,7 @@ function Show({ data, edit, setValsubmitted }) {
 	}
 
 	return (
-		<div className="px-2 py-1 my-0.5 rounded-sm flex justify-between border">
+		<div className="px-2 py-1 sm:py-4 my-0.5 sm:my-2 rounded-sm flex justify-between border shadow-sm">
 			<h1>{data.title}</h1>
 
 			{edit && <button onClick={handleRemove}>Remove</button>}

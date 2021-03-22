@@ -13,7 +13,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="name"
 						value={name}
 						onChange={(e) => handleName(e)}
-						className="border py-1 px-2 text-grey-darkest sm:w-64"
+						className="border py-1 px-2 text-grey-darkest w-64"
 					/>
 				</div>
 
@@ -26,7 +26,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="genre"
 						id="genre"
 						onChange={(e) => handleGenre(e)}
-						className="border py-1 px-2 text-grey-darkest sm:w-64"
+						className="border py-1 px-2 text-grey-darkest w-64"
 					>
 						<option value="movie">Movie</option>
 						<option value="series">TV Series</option>
@@ -43,7 +43,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="type"
 						id="type"
 						onChange={(e) => handleDropdown(e)}
-						className="border py-1 px-2 text-grey-darkest sm:w-64"
+						className="border py-1 px-2 text-grey-darkest w-64"
 					>
 						<option value="mustwatch">Must Watch</option>
 						<option value="continuewatching">Continue Watching</option>

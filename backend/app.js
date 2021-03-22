@@ -4,6 +4,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors());
+require('dotenv').config();
 
 const mongoose = require('mongoose');
 
@@ -30,11 +31,15 @@ app.get('/', (req, res) => {
 
 //conncecing to db
 
-mongoose.connect('mongodb://localhost:27017/remindmeDB', { useNewUrlParser: true });
+let uri = `mongodb+srv://root:${process.env.DB_PASS}@cluster0.80o53.mongodb.net/remindmeDB?retryWrites=true&w=majority`;
 
-mongoose.connection.once('open', () => {
-	console.log('database connection has been made');
-});
+console.log(uri);
+
+try {
+	mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('connected'));
+} catch (error) {
+	console.log('could not connect');
+}
 
 app.listen(5000, () => {
 	console.log(`Listening on http://localhost:5000/`);

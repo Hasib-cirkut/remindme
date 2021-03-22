@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import Main from './Main';
 
@@ -69,8 +69,8 @@ function Login() {
 
 					<p> /</p>
 
-					<h1 className="text-center text-xl tracking-widest subpixel-antialiased font-normal text-gray-600 hover:text-pink-700 cursor-pointer transition delay-150 duration-300 ease-in-out">
-						register
+					<h1 className="text-center text-xl tracking-widest subpixel-antialiased font-normal cursor-pointer transition delay-150 duration-300 ease-in-out">
+						<Link to="/register">register</Link>
 					</h1>
 				</div>
 

@@ -33,14 +33,12 @@ app.get('/', (req, res) => {
 
 let uri = `mongodb+srv://root:${process.env.DB_PASS}@cluster0.80o53.mongodb.net/remindmeDB?retryWrites=true&w=majority`;
 
-console.log(uri);
-
 try {
 	mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('connected'));
 } catch (error) {
 	console.log('could not connect');
 }
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
 	console.log(`Listening on http://localhost:5000/`);
 });

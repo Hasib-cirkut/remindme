@@ -44,7 +44,7 @@ function Main() {
 			return;
 		}
 
-		let temp = await fetch(`http://localhost:5000/post/addpost`, {
+		let temp = await fetch(`https://rocky-beach-47473.herokuapp.com/post/addpost`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -87,7 +87,7 @@ function Main() {
 	useEffect(
 		() => {
 			async function getData() {
-				let data = await fetch(`http://localhost:5000/post`, {
+				let data = await fetch(`https://rocky-beach-47473.herokuapp.com/post`, {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({

@@ -8,7 +8,7 @@ function Show({ data, edit, setValsubmitted }) {
 	async function handleRemove(event) {
 		event.preventDefault();
 
-		let data = await fetch('http://localhost:5000/post/deletepost', {
+		let data = await fetch('https://rocky-beach-47473.herokuapp.com/post/deletepost', {
 			method: 'DELETE',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({

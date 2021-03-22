@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Show({ data, edit, setValsubmitted }) {
 	const [ id, setId ] = useState(data._id);
+	const [ genre, setGenre ] = useState('');
+	const [ textColor, setTextColor ] = useState('');
 
 	async function handleRemove(event) {
 		event.preventDefault();
@@ -24,10 +26,24 @@ function Show({ data, edit, setValsubmitted }) {
 		}
 	}
 
+	useEffect(() => {
+		if (data.genre === 'series') {
+			setGenre((prev) => 'TV Series');
+			setTextColor((prev) => 'text-yellow-500');
+		} else if (data.genre === 'movie') {
+			setGenre((prev) => 'Movie');
+			setTextColor((prev) => 'text-blue-500');
+		} else {
+			setGenre((prev) => 'Book');
+			setTextColor((prev) => 'text-pink-500');
+		}
+	}, []);
+
 	return (
 		<div className="px-2 py-1 sm:py-4 my-0.5 sm:my-2 rounded-sm flex justify-between border shadow-sm">
-			<h1>{data.title}</h1>
-
+			<h1>
+				{data.title} | <span className={`${textColor}`}>{genre}</span>
+			</h1>
 			{edit && <button onClick={handleRemove}>Remove</button>}
 		</div>
 	);

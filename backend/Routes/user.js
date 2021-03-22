@@ -6,13 +6,13 @@ const UserModel = require('../Models/User');
 
 router.post('/login', async (req, res) => {
 	try {
-		const { username } = req.body;
+		const { username, password } = req.body;
 
-		let post = await UserModel.find({ username });
+		let post = await UserModel.find({ username, password });
 
 		if (post.length === 0) {
 			res.send({
-				message: 'nouserfound'
+				message: 'usernotfound'
 			});
 		} else {
 			res.send({

@@ -1,6 +1,6 @@
 function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name, genre }) {
 	return (
-		<div className="m-1 py-4 flex flex-row my-4 mx-2 text-center shadow-lg justify-center rounded-sm sm:max-w-2xl sm:mx-auto sm:mt-12">
+		<div className="m-1 py-4 flex flex-row my-4 mx-2 text-center shadow-lg justify-center rounded-sm sm:max-w-2xl sm:mx-auto sm:mt-8">
 			<form>
 				<div className="mb-2">
 					<label htmlFor="name" className="mb-2 uppercase font-bold text-md text-grey-darkest">
@@ -29,7 +29,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						className="border py-1 px-2 text-grey-darkest sm:w-64"
 					>
 						<option value="movie">Movie</option>
-						<option value="serie">TV Series</option>
+						<option value="series">TV Series</option>
 						<option value="book">Book</option>
 					</select>
 				</div>

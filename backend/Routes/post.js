@@ -4,8 +4,10 @@ const router = express.Router();
 
 const PostModel = require('../Models/Post');
 
-router.get('/', async (req, res) => {
-	let posts = await PostModel.find({});
+router.post('/', async (req, res) => {
+	let { username } = req.body;
+
+	let posts = await PostModel.find({ username });
 
 	console.log(posts);
 
@@ -15,12 +17,13 @@ router.get('/', async (req, res) => {
 router.post('/addpost', async (req, res) => {
 	console.log(req.body);
 
-	let { username, title, type } = req.body;
+	let { username, title, type, genre } = req.body;
 
 	let post = new PostModel({
 		username,
 		title,
-		type
+		type,
+		genre
 	});
 
 	try {

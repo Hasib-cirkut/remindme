@@ -1,5 +1,3 @@
-import { Row, Col } from 'antd';
-import Nav from '../Components/Nav';
 import FormComp from '../Components/FormComp';
 import Show from '../Components/Show';
 
@@ -8,10 +6,9 @@ import { Redirect } from 'react-router-dom';
 
 function Main() {
 	const [ name, setName ] = useState('');
-	const [ genre, setGenre ] = useState('');
+	const [ genre, setGenre ] = useState('movie');
 	const [ type, setType ] = useState('mustwatch');
 
-	const [ show, setShow ] = useState([]);
 	const [ valSubmitted, setValsubmitted ] = useState('no');
 
 	const [ mustWatch, setMustWatch ] = useState([]);

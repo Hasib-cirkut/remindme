@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-
-import Login from './Login';
 
 function Register() {
 	const [ name, setName ] = useState('');

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
-import Main from './Main';
-
 function Login() {
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');

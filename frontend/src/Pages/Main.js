@@ -45,7 +45,7 @@ function Main() {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
-				username: 'hasib',
+				username: localStorage.getItem('username'),
 				title: name,
 				type: type,
 				genre: genre

@@ -108,6 +108,10 @@ function Main() {
 					}
 				});
 
+				mWatch.reverse();
+				cWatch.reverse();
+				rWatch.reverse();
+
 				setMustWatch((prev) => {
 					return [ ...mWatch ];
 				});
@@ -119,10 +123,11 @@ function Main() {
 				setRewatch((prev) => {
 					return [ ...rWatch ];
 				});
+
+				console.log('running getdata');
 			}
 
 			getData();
-			console.log('running');
 		},
 		[ valSubmitted ]
 	);

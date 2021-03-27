@@ -13,7 +13,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="name"
 						value={name}
 						onChange={(e) => handleName(e)}
-						className="border rounded-sm py-1 px-2 text-grey-darkest w-64"
+						className="border-b border-blue-200 rounded-sm py-1 px-2 text-grey-darkest w-64 bg-secondary"
 					/>
 				</div>
 
@@ -26,7 +26,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="genre"
 						id="genre"
 						onChange={(e) => handleGenre(e)}
-						className="border rounded-sm py-1 px-2 text-grey-darkest w-64"
+						className="bg-secondary border border-blue-200 rounded-sm py-1 px-2 text-secondary w-64"
 					>
 						<option value="movie">Movie</option>
 						<option value="series">TV Series</option>
@@ -43,7 +43,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="type"
 						id="type"
 						onChange={(e) => handleDropdown(e)}
-						className="border rounded-sm py-1 px-2 text-grey-darkest w-64"
+						className="bg-secondary border border-blue-200 rounded-sm py-1 px-2 text-secondary w-64"
 					>
 						<option value="mustwatch">Must Watch</option>
 						<option value="continuewatching">Continue Watching</option>
@@ -54,7 +54,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 				<input
 					type="submit"
 					onClick={handleSubmit}
-					className="block bg-third text-primary hover:bg-green-500 text-white uppercase text-md mx-auto p-2 rounded transition delay-150 duration-300 ease-in-out"
+					className="block bg-primary text-primary hover:bg-green-500 text-white uppercase text-md mx-auto p-2 rounded transition delay-150 duration-300 ease-in-out"
 					value="Submit"
 				/>
 			</form>

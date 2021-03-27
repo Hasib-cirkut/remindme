@@ -44,7 +44,11 @@ function Show({ data, edit, setValsubmitted }) {
 			<h1 className="text-primary font-medium">
 				{data.title} | <span className={`${textColor}`}>{genre}</span>
 			</h1>
-			{edit && <button onClick={handleRemove}>Remove</button>}
+			{edit && (
+				<button onClick={handleRemove} className="text-secondary">
+					Remove
+				</button>
+			)}
 		</div>
 	);
 }

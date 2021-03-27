@@ -40,8 +40,8 @@ function Show({ data, edit, setValsubmitted }) {
 	}, []);
 
 	return (
-		<div className="px-2 py-2 sm:py-4 my-0.5 sm:my-2 rounded-sm flex justify-between border shadow-sm">
-			<h1>
+		<div className="bg-third px-2 py-2 sm:py-4 my-0.5 sm:my-2 rounded-sm flex justify-between shadow-sm">
+			<h1 className="text-primary font-medium">
 				{data.title} | <span className={`${textColor}`}>{genre}</span>
 			</h1>
 			{edit && <button onClick={handleRemove}>Remove</button>}

@@ -1,10 +1,14 @@
 import FormComp from '../Components/FormComp';
 import Show from '../Components/Show';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import { ThemeContext } from '../Contexts/ThemeContext';
+
 function Main() {
+	const { theme, setTheme } = useContext(ThemeContext);
+
 	const [ name, setName ] = useState('');
 	const [ genre, setGenre ] = useState('movie');
 	const [ type, setType ] = useState('mustwatch');
@@ -81,6 +85,12 @@ function Main() {
 		window.location.reload();
 	}
 
+	function handleTheme(event) {
+		event.preventDefault();
+
+		setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+	}
+
 	useEffect(
 		() => {
 			async function getData() {
@@ -136,9 +146,9 @@ function Main() {
 		return <Redirect to="/login" />;
 	} else {
 		return (
-			<div className="App" className="pb-4">
+			<div className="App" className="pb-4 bg-primary">
 				<div className="flex flex-col justify center text-center object-contain items-center">
-					<h1 className="text-2xl tracking-widest subpixel-antialiased font-sm text-gray-600">remindme</h1>
+					<h1 className="text-2xl tracking-widest subpixel-antialiased font-sm text-primary">remindme</h1>
 
 					<h1
 						className="text-sm tracking-widest subpixel-antialiased font-thin text-pink-300 hover:text-pink-600 cursor-pointer"
@@ -146,6 +156,10 @@ function Main() {
 					>
 						logout {`${localStorage.getItem('username')}`}
 					</h1>
+
+					<button onClick={handleTheme} className="mt-1 text-secondary px-2 py-1">
+						Theme
+					</button>
 				</div>
 
 				<FormComp
@@ -158,9 +172,9 @@ function Main() {
 				/>
 
 				<div className="m-1 sm:max-w-2xl sm:mx-auto">
-					<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
 						<div className="flex justify-between mb-1">
-							<h3>Must watch/read</h3>
+							<h3 className="text-secondary font-semibold text-lg">Must watch/read</h3>
 							{edit ? (
 								<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
 									Edit
@@ -173,7 +187,7 @@ function Main() {
 						</div>
 						<hr />
 
-						<div className="max-h-32 sm:max-h-52 overflow-auto px-2">
+						<div className="bg-secondary max-h-32 sm:max-h-52 overflow-auto px-2">
 							{mustWatch.map((show) => {
 								return (
 									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
@@ -182,9 +196,9 @@ function Main() {
 						</div>
 					</div>
 
-					<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
 						<div className="flex justify-between">
-							<h3>Continue Watching/Reading</h3>
+							<h3 className="text-secondary font-semibold text-lg">Continue Watching/Reading</h3>
 						</div>
 						<hr />
 
@@ -197,9 +211,9 @@ function Main() {
 						</div>
 					</div>
 
-					<div className="mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
 						<div className="flex justify-between">
-							<h3>Re watch/read</h3>
+							<h3 className="text-secondary font-semibold text-lg">Re watch/read</h3>
 						</div>
 						<hr />
 

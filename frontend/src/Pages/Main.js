@@ -146,7 +146,7 @@ function Main() {
 		return <Redirect to="/login" />;
 	} else {
 		return (
-			<div className="App" className="pb-4 bg-primary h-100">
+			<div className="App" className="pb-4 bg-primary h-screen">
 				<div className="flex flex-col justify-center text-center object-contain items-center">
 					<h1 className="text-2xl tracking-widest subpixel-antialiased font-sm text-primary">remindme</h1>
 

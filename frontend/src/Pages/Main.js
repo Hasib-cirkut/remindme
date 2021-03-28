@@ -218,8 +218,8 @@ function Main() {
 					genre={genre}
 				/>
 
-				<div className="m-1 sm:max-w-2xl sm:mx-auto">
-					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+				<div className="m-1 flex flex-col sm:max-w-2xl sm:mx-auto sm:justify-center lg:flex lg:flex-row lg:max-w-full lg:mx-12 lg:h-96">
+					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 lg:w-2/5">
 						<div className="flex justify-between mb-1">
 							<h3 className="text-secondary font-semibold text-lg">Must watch/read</h3>
 							{edit ? (
@@ -234,7 +234,7 @@ function Main() {
 						</div>
 						<hr />
 
-						<div className="bg-secondary max-h-32 sm:max-h-52 overflow-auto px-2">
+						<div className="bg-secondary max-h-32 lg:max-h-72 overflow-auto px-2">
 							{mustWatch.map((show) => {
 								return (
 									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
@@ -243,13 +243,13 @@ function Main() {
 						</div>
 					</div>
 
-					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
 						<div className="flex justify-between">
 							<h3 className="text-secondary font-semibold text-lg">Continue Watching/Reading</h3>
 						</div>
 						<hr />
 
-						<div className="max-h-32 overflow-auto px-2">
+						<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
 							{conWatch.map((show) => {
 								return (
 									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
@@ -258,13 +258,13 @@ function Main() {
 						</div>
 					</div>
 
-					<div className="bg-secondary mx-2 sm:mx-0 my-4 shadow-lg px-4 py-2">
+					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
 						<div className="flex justify-between">
 							<h3 className="text-secondary font-semibold text-lg">Re watch/read</h3>
 						</div>
 						<hr />
 
-						<div className="max-h-32 overflow-auto px-2">
+						<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
 							{rewatch.map((show) => {
 								return (
 									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />

@@ -13,7 +13,7 @@ function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name,
 						name="name"
 						value={name}
 						onChange={(e) => handleName(e)}
-						className="border-b border-blue-200 rounded-sm py-1 px-2 text-grey-darkest w-64 bg-secondary"
+						className="border-b border-blue-200 rounded-sm py-1 px-2 text-grey-darkest w-64 bg-secondary text-primary"
 					/>
 				</div>
 

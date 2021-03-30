@@ -1,6 +1,7 @@
 import Main from './Pages/Main';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Settings from './Pages/Settings';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -20,6 +21,10 @@ function App() {
 
 				<Route path="/main">
 					<Main />
+				</Route>
+
+				<Route path="/settings">
+					<Settings />
 				</Route>
 
 				<Route path="/register">

@@ -12,6 +12,9 @@ module.exports = {
 				accent: 'var(--color-text-accent)',
 				primary: 'var(--color-text-primary)',
 				secondary: 'var(--color-text-secondary)'
+			},
+			animation: {
+				'spin-slow': 'spin 3s linear infinite'
 			}
 		}
 	},

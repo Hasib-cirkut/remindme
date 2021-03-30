@@ -21,6 +21,8 @@ function Main() {
 
 	const [ edit, setEdit ] = useState(false);
 
+	const [ loading, setLoading ] = useState(true);
+
 	const handleDropdown = (event) => {
 		setType((prevVal) => {
 			return event.target.value;
@@ -135,6 +137,7 @@ function Main() {
 				});
 
 				console.log('running getdata');
+				setLoading(false);
 			}
 
 			getData();
@@ -234,13 +237,28 @@ function Main() {
 						</div>
 						<hr />
 
-						<div className="bg-secondary max-h-32 lg:max-h-72 overflow-auto px-2">
-							{mustWatch.map((show) => {
-								return (
-									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
-								);
-							})}
-						</div>
+						{loading ? (
+							<div className="m-1 animate-pulse">
+								<div className="w-1/2 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-full px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+							</div>
+						) : (
+							<div className="bg-secondary max-h-32 lg:max-h-72 overflow-auto px-2">
+								{mustWatch.map((show) => {
+									return (
+										<Show
+											data={show}
+											key={show._id}
+											edit={edit}
+											setValsubmitted={setValsubmitted}
+										/>
+									);
+								})}
+							</div>
+						)}
 					</div>
 
 					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
@@ -249,13 +267,28 @@ function Main() {
 						</div>
 						<hr />
 
-						<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
-							{conWatch.map((show) => {
-								return (
-									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
-								);
-							})}
-						</div>
+						{loading ? (
+							<div className="m-1 animate-pulse">
+								<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-9/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+							</div>
+						) : (
+							<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
+								{conWatch.map((show) => {
+									return (
+										<Show
+											data={show}
+											key={show._id}
+											edit={edit}
+											setValsubmitted={setValsubmitted}
+										/>
+									);
+								})}
+							</div>
+						)}
 					</div>
 
 					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
@@ -264,13 +297,28 @@ function Main() {
 						</div>
 						<hr />
 
-						<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
-							{rewatch.map((show) => {
-								return (
-									<Show data={show} key={show._id} edit={edit} setValsubmitted={setValsubmitted} />
-								);
-							})}
-						</div>
+						{loading ? (
+							<div className="m-1 animate-pulse">
+								<div className="w-8/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-4/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+								<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+							</div>
+						) : (
+							<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
+								{rewatch.map((show) => {
+									return (
+										<Show
+											data={show}
+											key={show._id}
+											edit={edit}
+											setValsubmitted={setValsubmitted}
+										/>
+									);
+								})}
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

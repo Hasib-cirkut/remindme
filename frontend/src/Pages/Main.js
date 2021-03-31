@@ -1,8 +1,9 @@
 import FormComp from '../Components/FormComp';
 import Show from '../Components/Show';
+import Settings from './Settings';
 
 import { useState, useEffect, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import { ThemeContext } from '../Contexts/ThemeContext';
 
@@ -199,7 +200,7 @@ function Main() {
 					</div>
 				</div>
 
-				<div className="flex sm:max-w-2xl sm:mx-auto justify-around text-center object-contain items-center">
+				<div className="flex sm:max-w-2xl sm:mx-auto mt-4 justify-around text-center object-contain items-center">
 					<svg
 						onClick={handleTheme}
 						className="cursor-pointer"
@@ -241,6 +242,33 @@ function Main() {
 					>
 						Logout
 					</h1> */}
+
+					<Link to="/settings">
+						<svg
+							className="cursor-pointer"
+							height="28"
+							viewBox="0 0 512 512"
+							width="28"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M314.06 512H193.57a15 15 0 01-15-15v-32.29c0-34.82-37.67-56.62-67.86-39.19l-27.96 16.15a15 15 0 01-20.5-5.5L2.01 331.83a15 15 0 015.49-20.49l27.96-16.14c30.16-17.42 30.19-60.95 0-78.38L7.5 200.67a15 15 0 01-5.49-20.49L62.25 75.82a15 15 0 0120.5-5.49l27.96 16.15c30.17 17.41 67.86-4.34 67.86-39.2V15a15 15 0 0115-15h120.48a15 15 0 0115 15v32.29c0 34.82 37.68 56.62 67.87 39.19l27.96-16.15a15 15 0 0120.5 5.5l60.24 104.35a15 15 0 01-5.5 20.49l-27.95 16.14c-30.17 17.42-30.19 60.95 0 78.38l27.96 16.14a15 15 0 015.49 20.49l-60.24 104.36a15 15 0 01-20.5 5.49l-27.96-16.15c-30.15-17.4-67.86 4.33-67.86 39.2V497a15 15 0 01-15 15zm0 0"
+								fill="#66a9df"
+							/>
+							<path
+								d="M500.13 311.33l-27.97-16.14c-30.18-17.43-30.16-60.96 0-78.38l27.96-16.14a15 15 0 005.5-20.49L445.36 75.82a15.01 15.01 0 00-20.49-5.5l-27.95 16.16c-30.2 17.43-67.88-4.37-67.88-39.2V15a15 15 0 00-15-15h-60.23v512h60.23a15 15 0 0015-15v-32.29c0-34.86 37.72-56.6 67.88-39.19l27.95 16.15a15.01 15.01 0 0020.5-5.49l60.23-104.36a15 15 0 00-5.48-20.5zm0 0"
+								fill="#4f84cf"
+							/>
+							<path
+								d="M253.82 361c-57.9 0-105-47.1-105-105s47.1-105 105-105c57.89 0 104.98 47.1 104.98 105s-47.1 105-104.98 105zm0 0"
+								fill="#d6f3fe"
+							/>
+							<path
+								d="M253.82 151v210c57.88 0 104.98-47.1 104.98-105s-47.1-105-104.98-105zm0 0"
+								fill="#bdecfc"
+							/>
+						</svg>
+					</Link>
 
 					<svg
 						className="cursor-pointer"

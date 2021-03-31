@@ -142,7 +142,10 @@ function Login() {
 						</div>
 
 						{loading ? (
-							<button className="h-10 w-32 px-2 py-6 rounded-lg bg-red-500 cursor-not-allowed" disabled>
+							<button
+								className="h-10 w-32 px-2 py-6 rounded-lg bg-yellow-500 cursor-not-allowed"
+								disabled
+							>
 								<div className="flex justify-around items-center h-full">
 									<svg
 										className="animate-spin-slow h-5 w-5 bg-re"

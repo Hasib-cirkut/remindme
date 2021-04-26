@@ -24,6 +24,8 @@ function Main() {
 
 	const [ loading, setLoading ] = useState(true);
 
+	const [ tile, setTile ] = useState('must');
+
 	const handleDropdown = (event) => {
 		setType((prevVal) => {
 			return event.target.value;
@@ -94,6 +96,24 @@ function Main() {
 		setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 	}
 
+	function handleMust(e) {
+		e.preventDefault();
+
+		setTile((prev) => 'must');
+	}
+
+	function handleContinue(e) {
+		e.preventDefault();
+
+		setTile((prev) => 'continue');
+	}
+
+	function handleRewatch(e) {
+		e.preventDefault();
+
+		setTile((prev) => 'rewatch');
+	}
+
 	useEffect(
 		() => {
 			async function getData() {
@@ -151,7 +171,7 @@ function Main() {
 	} else {
 		return (
 			<div className="App" className="pb-4 bg-primary h-screen">
-				<div className="flex flex-col justify-center text-center object-contain items-center">
+				<div className="flex flex-col justify-center items-center text-center object-contain items-center">
 					<h1 className="text-2xl tracking-widest subpixel-antialiased font-sm text-primary">remindme</h1>
 
 					<div className="flex items-end">
@@ -311,105 +331,141 @@ function Main() {
 					genre={genre}
 				/>
 
-				<div className="m-1 flex flex-col sm:max-w-2xl sm:mx-auto sm:justify-center lg:flex lg:flex-row lg:max-w-full lg:mx-12 lg:h-96">
-					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 lg:w-2/5">
-						<div className="flex justify-between mb-1">
-							<h3 className="text-secondary font-semibold text-lg">Must watch/read</h3>
-							{edit ? (
-								<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
-									Edit
-								</button>
+				<div className="flex justify-around items-center w-2/4 mx-auto mt-5">
+					<button
+						onClick={handleMust}
+						className={
+							`px-4 py-0.5 rounded-md focus:outline-none ` +
+							(tile === 'must' ? `bg-yellow-300 font-semibold` : `bg-gray-100 `)
+						}
+					>
+						Must
+					</button>
+					<button
+						onClick={handleContinue}
+						className={
+							`px-4 py-0.5 rounded-md focus:outline-none ` +
+							(tile === 'continue' ? `bg-yellow-300 font-semibold` : `bg-gray-100 `)
+						}
+					>
+						Ongoing
+					</button>
+					<button
+						onClick={handleRewatch}
+						className={
+							`px-4 py-0.5 rounded-md focus:outline-none ` +
+							(tile === 'rewatch' ? `bg-yellow-300 font-semibold` : `bg-gray-100 `)
+						}
+					>
+						Rewatch
+					</button>
+				</div>
+
+				<div className="m-1 flex flex-col max-w-2xl mx-auto justify-center">
+					{tile === 'must' && (
+						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md">
+							<div className="flex justify-between mb-1">
+								<h3 className="text-secondary font-semibold text-lg">Must watch/read</h3>
+								{edit ? (
+									<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
+										Edit
+									</button>
+								) : (
+									<button onClick={handleEdit} className="px-2 bg-green-300 rounded">
+										Edit
+									</button>
+								)}
+							</div>
+							<hr />
+
+							{loading ? (
+								<div className="m-1 animate-pulse">
+									<div className="w-1/2 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-full px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+								</div>
 							) : (
-								<button onClick={handleEdit} className="px-2 bg-green-300 rounded">
-									Edit
-								</button>
+								<div className="bg-secondary max-h-72 lg:max-h-72 overflow-auto px-2">
+									{mustWatch.map((show) => {
+										return (
+											<Show
+												data={show}
+												key={show._id}
+												edit={edit}
+												setValsubmitted={setValsubmitted}
+											/>
+										);
+									})}
+								</div>
 							)}
 						</div>
-						<hr />
+					)}
 
-						{loading ? (
-							<div className="m-1 animate-pulse">
-								<div className="w-1/2 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-full px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+					{tile === 'continue' && (
+						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md">
+							<div className="flex justify-between">
+								<h3 className="text-secondary font-semibold text-lg">Ongoing</h3>
 							</div>
-						) : (
-							<div className="bg-secondary max-h-32 lg:max-h-72 overflow-auto px-2">
-								{mustWatch.map((show) => {
-									return (
-										<Show
-											data={show}
-											key={show._id}
-											edit={edit}
-											setValsubmitted={setValsubmitted}
-										/>
-									);
-								})}
-							</div>
-						)}
-					</div>
+							<hr />
 
-					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
-						<div className="flex justify-between">
-							<h3 className="text-secondary font-semibold text-lg">Continue Watching/Reading</h3>
+							{loading ? (
+								<div className="m-1 animate-pulse">
+									<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-9/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+								</div>
+							) : (
+								<div className="max-h-72 lg:max-h-72 overflow-auto px-2">
+									{conWatch.map((show) => {
+										return (
+											<Show
+												data={show}
+												key={show._id}
+												edit={edit}
+												setValsubmitted={setValsubmitted}
+											/>
+										);
+									})}
+								</div>
+							)}
 						</div>
-						<hr />
+					)}
 
-						{loading ? (
-							<div className="m-1 animate-pulse">
-								<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-9/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+					{tile === 'rewatch' && (
+						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md max-h-72">
+							<div className="flex justify-between">
+								<h3 className="text-secondary font-semibold text-lg">Re watch/read</h3>
 							</div>
-						) : (
-							<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
-								{conWatch.map((show) => {
-									return (
-										<Show
-											data={show}
-											key={show._id}
-											edit={edit}
-											setValsubmitted={setValsubmitted}
-										/>
-									);
-								})}
-							</div>
-						)}
-					</div>
+							<hr />
 
-					<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:w-2/5 lg:mx-2">
-						<div className="flex justify-between">
-							<h3 className="text-secondary font-semibold text-lg">Re watch/read</h3>
+							{loading ? (
+								<div className="m-1 animate-pulse">
+									<div className="w-8/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-4/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+
+									<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
+								</div>
+							) : (
+								<div className="max-h-72 overflow-auto px-2">
+									{rewatch.map((show) => {
+										return (
+											<Show
+												data={show}
+												key={show._id}
+												edit={edit}
+												setValsubmitted={setValsubmitted}
+											/>
+										);
+									})}
+								</div>
+							)}
 						</div>
-						<hr />
-
-						{loading ? (
-							<div className="m-1 animate-pulse">
-								<div className="w-8/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-4/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-								<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-							</div>
-						) : (
-							<div className="max-h-32 lg:max-h-72 overflow-auto px-2">
-								{rewatch.map((show) => {
-									return (
-										<Show
-											data={show}
-											key={show._id}
-											edit={edit}
-											setValsubmitted={setValsubmitted}
-										/>
-									);
-								})}
-							</div>
-						)}
-					</div>
+					)}
 				</div>
 			</div>
 		);

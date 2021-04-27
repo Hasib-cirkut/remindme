@@ -1,5 +1,6 @@
 import FormComp from '../Components/FormComp';
 import Show from '../Components/Show';
+import Tiles from '../Components/Tiles';
 import Settings from './Settings';
 
 import { useState, useEffect, useContext } from 'react';
@@ -331,7 +332,7 @@ function Main() {
 					genre={genre}
 				/>
 
-				<div className="flex justify-around items-center w-2/4 mx-auto mt-5">
+				<div className="flex justify-around items-center w-2/4 mx-auto mt-5 px-4">
 					<button
 						onClick={handleMust}
 						className={
@@ -344,7 +345,7 @@ function Main() {
 					<button
 						onClick={handleContinue}
 						className={
-							`px-4 py-0.5 rounded-md focus:outline-none ` +
+							`px-4 py-0.5 rounded-md focus:outline-none mx-4 sm:mx-0 ` +
 							(tile === 'continue' ? `bg-yellow-300 font-semibold` : `bg-gray-100 `)
 						}
 					>
@@ -363,108 +364,33 @@ function Main() {
 
 				<div className="m-1 flex flex-col max-w-2xl mx-auto justify-center">
 					{tile === 'must' && (
-						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md">
-							<div className="flex justify-between mb-1">
-								<h3 className="text-secondary font-semibold text-lg">Must watch/read</h3>
-								{edit ? (
-									<button onClick={handleEdit} className="px-2 bg-green-600 rounded">
-										Edit
-									</button>
-								) : (
-									<button onClick={handleEdit} className="px-2 bg-green-300 rounded">
-										Edit
-									</button>
-								)}
-							</div>
-							<hr />
-
-							{loading ? (
-								<div className="m-1 animate-pulse">
-									<div className="w-1/2 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-full px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-								</div>
-							) : (
-								<div className="bg-secondary max-h-72 lg:max-h-72 overflow-auto px-2">
-									{mustWatch.map((show) => {
-										return (
-											<Show
-												data={show}
-												key={show._id}
-												edit={edit}
-												setValsubmitted={setValsubmitted}
-											/>
-										);
-									})}
-								</div>
-							)}
-						</div>
+						<Tiles
+							title="Must"
+							data={mustWatch}
+							edit={edit}
+							loading={loading}
+							setValsubmitted={setValsubmitted}
+						/>
 					)}
 
 					{tile === 'continue' && (
-						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md">
-							<div className="flex justify-between">
-								<h3 className="text-secondary font-semibold text-lg">Ongoing</h3>
-							</div>
-							<hr />
-
-							{loading ? (
-								<div className="m-1 animate-pulse">
-									<div className="w-1/3 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-9/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-								</div>
-							) : (
-								<div className="max-h-72 lg:max-h-72 overflow-auto px-2">
-									{conWatch.map((show) => {
-										return (
-											<Show
-												data={show}
-												key={show._id}
-												edit={edit}
-												setValsubmitted={setValsubmitted}
-											/>
-										);
-									})}
-								</div>
-							)}
-						</div>
+						<Tiles
+							title="Ongoing"
+							data={conWatch}
+							edit={edit}
+							loading={loading}
+							setValsubmitted={setValsubmitted}
+						/>
 					)}
 
 					{tile === 'rewatch' && (
-						<div className="bg-secondary mx-2 lg:mx-0 my-4 shadow-lg px-4 py-2 lg:mx-2 rounded-md max-h-72">
-							<div className="flex justify-between">
-								<h3 className="text-secondary font-semibold text-lg">Re watch/read</h3>
-							</div>
-							<hr />
-
-							{loading ? (
-								<div className="m-1 animate-pulse">
-									<div className="w-8/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-4/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-
-									<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
-								</div>
-							) : (
-								<div className="max-h-72 overflow-auto px-2">
-									{rewatch.map((show) => {
-										return (
-											<Show
-												data={show}
-												key={show._id}
-												edit={edit}
-												setValsubmitted={setValsubmitted}
-											/>
-										);
-									})}
-								</div>
-							)}
-						</div>
+						<Tiles
+							title="Rewatch"
+							data={rewatch}
+							edit={edit}
+							loading={loading}
+							setValsubmitted={setValsubmitted}
+						/>
 					)}
 				</div>
 			</div>

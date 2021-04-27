@@ -1,6 +1,6 @@
 function FormComp({ handleName, handleDropdown, handleSubmit, handleGenre, name, genre }) {
 	return (
-		<div className="sm:m-1 py-4 px-4 bg-secondary flex flex-col justify-center items-center sm:flex-row my-4 sm:mx-2 text-center shadow-lg justify-around rounded-sm sm:max-w-2xl sm:mx-auto sm:mt-8">
+		<div className="sm:m-1 py-4 px-4 bg-secondary flex flex-col justify-center items-center sm:flex-row my-4 sm:mx-2 text-center shadow-lg justify-around rounded-md sm:max-w-2xl sm:mx-auto sm:mt-8">
 			<div className="flex-1 bg-white rounded-md justify-center items-center py-3 px-3 mr-2 w-full">
 				<div className="flex flex-col justify-center items-center sm:flex-row">
 					<input

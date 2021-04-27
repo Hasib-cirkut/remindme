@@ -40,7 +40,14 @@ function Show({ data, edit, setValsubmitted }) {
 	}, []);
 
 	return (
-		<div className="bg-third px-2 py-2 sm:py-4 my-0.5 sm:my-2 rounded-sm flex justify-between shadow-sm">
+		<div
+			className={
+				`bg-third text-sm sm:text-base px-2 py-2 sm:py-4 my-2 rounded-sm flex justify-between shadow-sm border ` +
+				(data.genre === 'movie'
+					? `border-blue-200`
+					: data.genre === 'series' ? `border-yellow-200` : `border-pink-200`)
+			}
+		>
 			<h1 className="text-primary font-medium">
 				{data.title} | <span className={`${textColor}`}>{genre}</span>
 			</h1>

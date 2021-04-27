@@ -69,7 +69,7 @@ export default function Tiles({ title, data, edit, loading, setValsubmitted }) {
 					<div className="w-6/12 px-2 py-4 sm:py-6 bg-gray-400 mt-2 rounded-sm" />
 				</div>
 			) : (
-				<div className="max-h-72 lg:max-h-72 overflow-auto px-2">
+				<div className="max-h-72 lg:max-h-72 overflow-auto px-2 bg-white">
 					{data.map((show) => {
 						if (sort === 'movie') {
 							if (show.genre === 'movie')
